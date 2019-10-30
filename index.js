@@ -2,28 +2,15 @@
 const express = require("express");
 const routes = require('./routes');
 const app = express();
-
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());       // to support JSON-encoded bodies
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    extended: true
-}));
-
 const cors = require('cors')
 app.use(cors())
 
 app.use('/api', routes)
 
-
-app.use(function (req, res, next) {
-    const respuesta = {
-        error: true,
-        codigo: 404,
-        mensaje: 'URL no encontrada'
-    };
-    res.status(404).send(respuesta);
+app.get('*', (req, res) => {
+    res.end('404');
 });
 
 app.listen(4000, () => {

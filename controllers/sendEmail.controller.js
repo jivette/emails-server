@@ -3,12 +3,15 @@ const { contact } = sendEmail;
 
 const getData = async (req, res, next) => {
     try {
-        console.log("controller");
-        const respuesta = await contact(req, res);
-        console.log(respuesta);
-        res.sendStatus(respuesta.codigo);
-        next();
+        await contact(req, res, next);
     } catch (error) {
+        res.status(500).send({
+            error: false,
+            code: 500,
+            message: 'Your request was not completed, try later.',
+        });
+
+        res.status(500);
         next(error);
     }
 }

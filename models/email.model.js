@@ -1,20 +1,20 @@
-const credentials = {
-    host: 'smtp.mailtrap.io',
-        port: 2525,
-            auth: {
-        user: 'faefb904d28c7b',
-            pass: 'e3962cd0d16f21'
-    }
-}
+const express = require("express");
+const app = express();
+
+require('dotenv').config()
+app.use(express.json());
 
 const message = {
-    from: 'ijuarez@masterdevel.com', // Sender address
-    to: 'ijuarez@masterdevel.com',         // List of recipients
-    subject: 'Design Your Model S | Tesla', // Subject line
-    text: 'Have the most fun you can in a car. Get your Tesla today!' // Plain text body
+    from: 'Excited User <ijuarez@masterdevel.com>',
+    to: 'ijuarez@masterdevel.com',
+    subject: 'Hello',
+    html: ''
 };
 
+const instanceMailgun = require('mailgun-js')({ apiKey: process.env.API_KEY, domain: process.env.DOMAIN });
+
 module.exports = {
-    credentials,
-    message
+    message,
+    instanceMailgun
 }
+
