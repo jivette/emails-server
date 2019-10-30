@@ -1,4 +1,4 @@
-# Airbit - Email Landing
+# Email service
  
 ## Setup 
 

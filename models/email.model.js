@@ -5,8 +5,8 @@ require('dotenv').config()
 app.use(express.json());
 
 const message = {
-    from: 'Excited User <ijuarez@masterdevel.com>',
-    to: 'ijuarez@masterdevel.com',
+    from: 'Excited User <ijuarez@gmail.com>',
+    to: 'ijuarez@gmail.com',
     subject: 'Hello',
     html: ''
 };
